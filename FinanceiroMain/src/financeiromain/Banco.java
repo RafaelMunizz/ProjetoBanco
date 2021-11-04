@@ -4,11 +4,16 @@ import java.util.ArrayList;
 
 public class Banco {
     
-    ArrayList<Pessoa> registroPessoas = new ArrayList<Pessoa>();
     ArrayList<Conta> registroContas = new ArrayList<Conta>();
     
-    public void inserirPessoa(Pessoa nome){
-        registroPessoas.add(nome);
+    public void inserirCliente(Conta c){
+        registroContas.add(c);
     }
 
+    @Override
+    public String toString() {
+        return "Banco{" + "RegistroContas = " + registroContas + '}';
+    }
+    
+    
 }
