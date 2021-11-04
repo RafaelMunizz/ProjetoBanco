@@ -32,6 +32,7 @@ public class Conta {
     
     public void removerSaldo(double valor) {
         
+        // Continuar daqui e ajeitar adicionar saldo para não deixar o valor negativo
         if((this.getSaldo() - valor) < 0){
             this.setSaldo(0);
             
