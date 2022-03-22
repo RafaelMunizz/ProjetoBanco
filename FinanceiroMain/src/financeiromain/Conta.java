@@ -27,17 +27,30 @@ public class Conta {
     }
         
     public void adicionarSaldo(double valor) {
-        this.setSaldo(this.getSaldo() + valor);
+        
+        if (valor < 0) {
+            System.out.println("ERRO: Valor negativo não permitido como saldo adicional!");
+            
+        } else {
+            this.setSaldo(this.getSaldo() + valor);
+        }
     }
     
     public void removerSaldo(double valor) {
         
-        // Continuar daqui e ajeitar adicionar saldo para não deixar o valor negativo
-        if((this.getSaldo() - valor) < 0){
-            this.setSaldo(0);
+        if (valor < 0){
+
+            System.out.println("ERRO: Valor negativo não permitido como saldo a ser removido!");
             
         } else {
-            this.setSaldo(this.getSaldo() - valor);
+                    
+            if((this.getSaldo() - valor) < 0) {
+                this.setSaldo(0);
+            
+            } else {
+                this.setSaldo(this.getSaldo() - valor);
+            }
+            
         }
     }
 

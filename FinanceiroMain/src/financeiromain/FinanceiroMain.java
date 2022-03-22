@@ -12,7 +12,7 @@ public class FinanceiroMain {
         
         c1.adicionarSaldo(200);
         c2.adicionarSaldo(500);
-        c2.adicionarSaldo(-900);
+        c2.adicionarSaldo(700);
 
         registros.inserirCliente(c1);
         registros.inserirCliente(c2);
@@ -20,5 +20,9 @@ public class FinanceiroMain {
 
         System.out.println(registros.toString());
         
+        c2.removerSaldo(1000);
+        
+        System.out.println(registros.toString());
+
     }
 }

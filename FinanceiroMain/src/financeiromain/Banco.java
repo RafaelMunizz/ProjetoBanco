@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Banco {
     
-    ArrayList<Conta> registroContas = new ArrayList<Conta>();
+    ArrayList<Conta> registroContas = new ArrayList<>();
     
     public void inserirCliente(Conta c){
         registroContas.add(c);
