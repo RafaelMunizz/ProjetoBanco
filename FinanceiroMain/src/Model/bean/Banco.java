@@ -1,4 +1,4 @@
-package financeiromain;
+package Model.bean;
 
 import java.util.ArrayList;
 

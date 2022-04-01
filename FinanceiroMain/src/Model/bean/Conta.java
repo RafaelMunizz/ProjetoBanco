@@ -1,20 +1,20 @@
-package financeiromain;
+package Model.bean;
 
 public class Conta {
     
-    protected String titular;
+    protected Pessoa titular;
     protected double saldo;
 
-    public Conta(String titular) {
+    public Conta(Pessoa titular) {
         this.titular = titular;
         this.saldo = 0;
     }
 
-    protected String getTitular() {
+    protected Pessoa getTitular() {
         return titular;
     }
 
-    protected void setTitular(String titular) {
+    protected void setTitular(Pessoa titular) {
         this.titular = titular;
     }
 
@@ -56,7 +56,7 @@ public class Conta {
 
     @Override
     public String toString() {
-        return "Conta{" + " Titular = " + titular + "| Saldo = " + saldo + '}';
+        return "Conta{" + " Titular = " + titular.getNome() + "| Saldo = " + saldo + '}';
     }
     
 }
