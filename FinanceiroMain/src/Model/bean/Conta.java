@@ -2,14 +2,33 @@ package Model.bean;
 
 public class Conta {
     
+    protected int ID_Conta;
     protected Pessoa titular;
     protected double saldo;
+    protected int ID_Pessoa;    
 
     public Conta(Pessoa titular) {
         this.titular = titular;
         this.saldo = 0;
     }
 
+    public int getID_Conta() {
+        return ID_Conta;
+    }
+
+    public void setID_Conta(int ID_Conta) {
+        this.ID_Conta = ID_Conta;
+    }
+
+    public int getID_Pessoa() {
+        return ID_Pessoa;
+    }
+
+    public void setID_Pessoa(int ID_Pessoa) {
+        this.ID_Pessoa = ID_Pessoa;
+    }
+
+    
     protected Pessoa getTitular() {
         return titular;
     }
