@@ -6,17 +6,19 @@ public class Pessoa {
     protected String RG;
     protected String dataNascimento;
 
+    public Pessoa() {}
+    
     public Pessoa(String nome, String RG, String dataNascimento) {
         this.nome = nome;
         this.RG = RG;
         this.dataNascimento = dataNascimento;
     }
 
-    protected String getNome() {
+    public String getNome() {
         return nome;
     }
 
-    protected void setNome(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
