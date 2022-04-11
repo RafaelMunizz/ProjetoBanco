@@ -7,14 +7,11 @@ package Model.Dao;
 import Connection.ConnectionFactory;
 import Model.bean.Pessoa;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.Statement;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -46,70 +43,53 @@ public class PessoaDAO {
         
     }
     
-    // MODIFICAR PARA TENTAR IMPRIMIR OS DADOS DA TABELA NA TELA 
-    public List<Pessoa> read(){
+    public void read() {
         
-        Connection con = ConnectionFactory.getConnection();
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
+    Connection con = ConnectionFactory.getConnection();
+    String query = "SELECT * FROM Pessoa";
+    
+    try (Statement stmt = con.createStatement()) {
         
-        List<Pessoa> pessoas = new ArrayList<>();
+      ResultSet rs = stmt.executeQuery(query);
+      
+      while (rs.next()) {
         
-        try {
-            stmt = con.prepareStatement("SELECT * FROM Pessoa");
-            rs = stmt.executeQuery();
-            
-            while (rs.next()) {
-               
-                Pessoa p = new Pessoa();
-                
-                p.setNome(rs.getString("Nome"));
-                p.setRG(rs.getString("RG"));
-                p.setdataNascimento(rs.getString("dataNascimento"));
-                pessoas.add(p);
+            String nome = rs.getString("Nome");
+            String rg = rs.getString("RG");
+            String dataNasc = rs.getString("dataNascimento");
 
-            }
-        
-        } catch (SQLException ex) {
+            System.out.println(nome + ", " + rg + ", " + dataNasc);
+      }
+      
+    } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao consultar: " + ex);
         
         }
-        
-        return pessoas;
     }
     
-    /*
-    public List<Pessoa> read(){
+        public void delete(Pessoa p){
         
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
-        ResultSet rs = null;
-        
-        List<Pessoa> pessoas = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM Pessoa");
-            rs = stmt.executeQuery();
+            stmt = con.prepareStatement("DELETE FROM Pessoa WHERE Nome = (?) AND"
+                    + " RG = (?) AND DataNascimento = (?)");
+                        
+            stmt.setString(1, p.getNome());
+            stmt.setString(2, p.getRG());
+            stmt.setString(3, p.getdataNascimento());
             
-            while (rs.next()) {
-               
-                Pessoa p = new Pessoa();
-                
-                p.setNome(rs.getString("Nome"));
-                p.setRG(rs.getString("RG"));
-                p.setdataNascimento(rs.getString("dataNascimento"));
-                pessoas.add(p);
-
-            }
-        
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Removido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao consultar: " + ex);
+            JOptionPane.showMessageDialog(null, "Erro ao remover: " + ex);
         
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
         }
         
-        return pessoas;
     }
-   */
-    
     
 }
