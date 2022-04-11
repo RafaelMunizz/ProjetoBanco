@@ -2,6 +2,7 @@ package Model.bean;
 
 public class Pessoa {
     
+    protected int ID_Pessoa;
     protected String nome;
     protected String RG;
     protected String dataNascimento;
@@ -12,6 +13,14 @@ public class Pessoa {
         this.nome = nome;
         this.RG = RG;
         this.dataNascimento = dataNascimento;
+    }
+
+    public int getID_Pessoa() {
+        return ID_Pessoa;
+    }
+
+    public void setID_Pessoa(int ID_Pessoa) {
+        this.ID_Pessoa = ID_Pessoa;
     }
 
     public String getNome() {
