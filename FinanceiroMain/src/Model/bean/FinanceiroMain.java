@@ -11,7 +11,7 @@ public class FinanceiroMain {
         Pessoa p3 = new Pessoa("Arthur Ciclano", "4.556.231", "1989-1-6");
         PessoaDAO dao = new PessoaDAO();
         
-        dao.read();
+        dao.delete(p1);
         
         //dao.create(p3);
 
