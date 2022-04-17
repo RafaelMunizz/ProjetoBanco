@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class PessoaDAO {
     
-    public void create(Pessoa p){
+    public void insertPessoa(Pessoa p){
         
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -30,6 +30,7 @@ public class PessoaDAO {
             stmt.setString(1, p.getNome());
             stmt.setString(2, p.getRG());
             stmt.setString(3, p.getdataNascimento());
+            
             
             stmt.executeUpdate();
             
@@ -43,31 +44,55 @@ public class PessoaDAO {
         
     }
     
-    public void read() {
+    // Pegar ID para passar no método  de inserir uma conta. Em andamento
+    protected static int getID_Pessoa(String rg){
         
-    Connection con = ConnectionFactory.getConnection();
-    String query = "SELECT * FROM Pessoa";
-    
-    try (Statement stmt = con.createStatement()) {
-        
-      ResultSet rs = stmt.executeQuery(query);
-      
-      while (rs.next()) {
-        
-            String nome = rs.getString("Nome");
-            String rg = rs.getString("RG");
-            String dataNasc = rs.getString("dataNascimento");
+        Connection con = ConnectionFactory.getConnection();
+        String query = "SELECT * FROM Pessoa where RG = '4.556.231'";
 
-            System.out.println(nome + ", " + rg + ", " + dataNasc);
-      }
-      
-    } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao consultar: " + ex);
-        
+        try (Statement stmt = con.createStatement()) {
+
+            ResultSet rs = stmt.executeQuery(query);
+            
+            System.out.println(rs.getString("RG")); // Teste se funciona pegar um dado do banco
+            
+            //return rs.getInt("ID_Pessoa");
+            return 1;
+            
+
+        } catch (SQLException ex) {
+            
+            JOptionPane.showMessageDialog(null, "Erro ao consultar ID_Pessoa: " + ex);
+            return 0;
+
         }
     }
     
-        public void delete(Pessoa p){
+    public void readPessoa() {
+
+        Connection con = ConnectionFactory.getConnection();
+        String query = "SELECT * FROM Pessoa";
+
+        try (Statement stmt = con.createStatement()) {
+
+          ResultSet rs = stmt.executeQuery(query);
+
+          while (rs.next()) {
+
+                String nome = rs.getString("Nome");
+                String rg = rs.getString("RG");
+                String dataNasc = rs.getString("dataNascimento");
+
+                System.out.println(nome + ", " + rg + ", " + dataNasc);
+          }
+
+        } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao consultar: " + ex);
+
+        }
+    }
+    
+    public void deletePessoa(Pessoa p){
         
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
