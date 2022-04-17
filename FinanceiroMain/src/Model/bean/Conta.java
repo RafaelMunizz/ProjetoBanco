@@ -3,47 +3,40 @@ package Model.bean;
 public class Conta {
     
     protected int ID_Conta;
-    protected Pessoa titular;
     protected double saldo;
+    protected String tipoConta;
     protected int ID_Pessoa;    
-
-    public Conta(Pessoa titular) {
-        this.titular = titular;
-        this.saldo = 0;
-    }
-
-    public int getID_Conta() {
-        return ID_Conta;
-    }
-
-    public void setID_Conta(int ID_Conta) {
-        this.ID_Conta = ID_Conta;
-    }
-
-    public int getID_Pessoa() {
-        return ID_Pessoa;
-    }
-
-    public void setID_Pessoa(int ID_Pessoa) {
-        this.ID_Pessoa = ID_Pessoa;
-    }
-
     
-    protected Pessoa getTitular() {
-        return titular;
+    //Necessário para insersão no ContaDAO
+    private String RG;
+
+    public Conta(Pessoa p, String tipoConta) {
+        this.tipoConta = tipoConta;
+        this.saldo = 0;
+        this.RG = p.getRG();
     }
 
-    protected void setTitular(Pessoa titular) {
-        this.titular = titular;
+    public String getTipoConta() {
+        return tipoConta;
     }
 
-    protected double getSaldo() {
+    private void setTipoConta(String tipoConta) {
+        this.tipoConta = tipoConta;
+    }
+
+    public double getSaldo() {
         return saldo;
     }
 
-    protected void setSaldo(double saldo) {
+    private void setSaldo(double saldo) {
         this.saldo = saldo;
     }
+
+    
+    public String getRG() {
+        return RG;
+    }
+   
         
     public void adicionarSaldo(double valor) {
         
@@ -75,7 +68,7 @@ public class Conta {
 
     @Override
     public String toString() {
-        return "Conta{" + " Titular = " + titular.getNome() + "| Saldo = " + saldo + '}';
+        return "Conta{" + "| Saldo = " + saldo + '}';
     }
     
 }
