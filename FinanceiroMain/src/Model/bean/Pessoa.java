@@ -7,7 +7,11 @@ public class Pessoa {
     protected String RG;
     protected String dataNascimento;
 
-    public Pessoa() {}
+    public Pessoa() {
+        this.nome = null;
+        this.RG = null;
+        this.dataNascimento = null;
+    }
     
     public Pessoa(String nome, String RG, String dataNascimento) {
         this.nome = nome;
@@ -15,19 +19,12 @@ public class Pessoa {
         this.dataNascimento = dataNascimento;
     }
 
-    public int getID_Pessoa() {
-        return ID_Pessoa;
-    }
-
-    public void setID_Pessoa(int ID_Pessoa) {
-        this.ID_Pessoa = ID_Pessoa;
-    }
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
+    private void setNome(String nome) {
         this.nome = nome;
     }
 
@@ -35,7 +32,7 @@ public class Pessoa {
         return RG;
     }
 
-    public void setRG(String RG) {
+    private void setRG(String RG) {
         this.RG = RG;
     }
 
@@ -43,7 +40,7 @@ public class Pessoa {
         return dataNascimento;
     }
 
-    public void setdataNascimento(String dataNascimento) {
+    private void setdataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
     
