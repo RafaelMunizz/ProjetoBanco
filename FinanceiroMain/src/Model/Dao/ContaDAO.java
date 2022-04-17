@@ -24,6 +24,8 @@ public class ContaDAO {
     
     public void insertConta(Conta c){
         
+        // Necessário inserir a chave primária de Pessoa.ID_Pessoa em Conta.ID_Pessoa para poder inserir todos os dados. Em andamento.
+        
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
