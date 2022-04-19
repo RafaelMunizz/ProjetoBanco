@@ -45,21 +45,30 @@ public class PessoaDAO {
     }
     
     // Pegar ID para passar no método  de inserir uma conta. Em andamento
-    protected static int getID_Pessoa(String rg){
+    public static int getID_Pessoa(String rg){
         
         Connection con = ConnectionFactory.getConnection();
-        String query = "SELECT * FROM Pessoa where RG = '4.556.231'";
-
+        String query = "SELECT ID_Pessoa FROM Pessoa WHERE RG = %s";
+        
         try (Statement stmt = con.createStatement()) {
 
-            ResultSet rs = stmt.executeQuery(query);
+            //ResultSet rs = stmt.executeQuery(query);
+            ResultSet rs = stmt.executeQuery(String.format(query, rg));
+
+            if (rs.next()) {
             
-            System.out.println(rs.getString("RG")); // Teste se funciona pegar um dado do banco
+                System.out.println(rs.getInt("ID_Pessoa"));
+                return 2;
+                
+            } else {
+
+                throw new RuntimeException("Erro de autenticacao");
+            }
+            
             
             //return rs.getInt("ID_Pessoa");
-            return 1;
+            //return 1;
             
-
         } catch (SQLException ex) {
             
             JOptionPane.showMessageDialog(null, "Erro ao consultar ID_Pessoa: " + ex);
