@@ -27,8 +27,8 @@ public class FinanceiroMain {
         
        
 
-        
-        daoConta.insertConta(c2);
+        daoPessoa.getID_Pessoa("4.556.231");
+        //daoConta.insertConta(c2);
         
         
         
