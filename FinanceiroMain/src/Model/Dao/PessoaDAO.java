@@ -68,6 +68,7 @@ public class PessoaDAO {
             
             //return rs.getInt("ID_Pessoa");
             //return 1;
+            //https://pt.stackoverflow.com/questions/134134/problemas-para-pegar-valor-do-resultset
             
         } catch (SQLException ex) {
             
