@@ -15,11 +15,11 @@ public class FinanceiroMain {
 
         
         //dao.delete(p1);
-        //dao.readPessoa();
+        daoPessoa.readPessoa();
         
         //dao.create(p3);
 
-        
+      
         
         Banco registros = new Banco();
         
@@ -27,7 +27,7 @@ public class FinanceiroMain {
         
        
 
-        daoPessoa.getID_Pessoa("4.556.231");
+        //daoPessoa.getID_Pessoa("4.556.231");
         //daoConta.insertConta(c2);
         
         
